@@ -1,3 +1,6 @@
+library(httr)
+library(dplyr)
+
 # load in original dataset
 bounced_emails <- read.csv(file = 'invalid_emails.csv', check.names = F, stringsAsFactors = F)
 
@@ -10,4 +13,6 @@ email_addresses
 # create a dataframe from the Emails column to send to API
 email_addresses_df <- data.frame(bounced_emails$Email)
 
+# create list of 100 emails for R&D of this code
+top_emails <- email_addresses_df %>% slice(1:100)
 
