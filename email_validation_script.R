@@ -22,7 +22,7 @@ top_ten_emails <- email_addresses_df %>% slice(1:10)
 
 # generating POST request
 api_url = "https://api.clearout.io/v2/email_verify/bulk"
-api_token = "dc8f5d05b12385634fdecbfb3bab7765:e3015bccbe04ff4e1abeb98096b467b6347a4f4a39a6b56f4eb837ad7404ab57"
+api_token = "api token"
 
 httr::POST(url = "https://api.clearout.io/v2/email_verify/bulk", api_token, body = list(top_ten_emails), encode = c("json"))
 
