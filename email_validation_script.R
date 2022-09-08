@@ -16,3 +16,12 @@ email_addresses_df <- data.frame(bounced_emails$Email)
 # create list of 100 emails for R&D of this code
 top_emails <- email_addresses_df %>% slice(1:100)
 
+# create a list of 10 to verify to stay within free trial limits
+top_ten_emails <- email_addresses_df %>% slice(1:10)
+
+# generating POST request
+api_url = "https://api.clearout.io/v2/email_verify/bulk"
+emails_body = top_ten_emails
+api_token = "api token"
+
+POST(url = api_url, api_token, body = emails_body, encode = "json")
