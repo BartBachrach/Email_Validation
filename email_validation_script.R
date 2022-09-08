@@ -1,5 +1,6 @@
 library(httr)
 library(dplyr)
+library(jsonlite)
 
 # load in original dataset
 bounced_emails <- read.csv(file = 'invalid_emails.csv', check.names = F, stringsAsFactors = F)
@@ -21,7 +22,7 @@ top_ten_emails <- email_addresses_df %>% slice(1:10)
 
 # generating POST request
 api_url = "https://api.clearout.io/v2/email_verify/bulk"
-emails_body = top_ten_emails
-api_token = "api token"
+api_token = "dc8f5d05b12385634fdecbfb3bab7765:e3015bccbe04ff4e1abeb98096b467b6347a4f4a39a6b56f4eb837ad7404ab57"
 
-POST(url = api_url, api_token, body = emails_body, encode = "json")
+httr::POST(url = "https://api.clearout.io/v2/email_verify/bulk", api_token, body = list(top_ten_emails), encode = c("json"))
+
